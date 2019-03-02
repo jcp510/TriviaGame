@@ -3,6 +3,6 @@ $( document ).ready(function() {
     // When start button is clicked, button disappears and timer & questions are displayed.
     $(this).hide();
     // Show timer & questions.
-
+    $("#timAndQue").toggle();
   });
 });
