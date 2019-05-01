@@ -9,14 +9,18 @@ $( document ).ready(function() {
     // Show timer & questions.
     $("form").toggle();
 
-    // Timer
+    // Initialize timer with 30 seconds.
     $("#timer").text("Time Remaining: " + time + " seconds");
 
-    // Begin time countdown.
-    setTimeout(function run() {
+    // Game timer.
+    var gogoGadgetTimer = setInterval(function run() {
       time--;
       $("#timer").text("Time Remaining: " + time + " seconds");
-      setTimeout(run, 1000);
+      
+      // Stop timer when time runs out at zero seconds.
+      if (time <= 0) {
+        clearInterval(gogoGadgetTimer);
+      };
     }, 1000);
   });
 });
