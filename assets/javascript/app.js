@@ -3,7 +3,7 @@
 *  Display missed questions/questions that had wrong answers when time expires.
     ***********************************************  */
 $( document ).ready(function() {
-  var time = 40;
+  var time = 30;
 
   // To track correct answers.
   var correctAns = 0;
