@@ -5,6 +5,9 @@
 $( document ).ready(function() {
   var time = 30;
 
+  // Game timer.
+  var gogoGadgetTimer;
+
   // To track correct answers.
   var correctAns = 0;
 
@@ -26,6 +29,8 @@ $( document ).ready(function() {
     $("#wrong-answers").text("Incorrect Answers: " + wrongAns);
   };
 
+  
+
   $("a").click(function() {
     
     // When start button is clicked, button disappears and timer & questions are displayed.
@@ -38,14 +43,14 @@ $( document ).ready(function() {
     $("#timer").text("Time Remaining: " + time + " seconds");
 
     // Game timer.
-    var gogoGadgetTimer = setInterval(function run() {
+    gogoGadgetTimer = setInterval(function run() {
       time--;
       $("#timer").text("Time Remaining: " + time + " seconds");
       
       // Stop timer when time runs out at zero seconds.
       if (time <= 0) {
         clearInterval(gogoGadgetTimer);
-        
+
         // Hide timer and questions.
         $("form").toggle();
 
@@ -53,6 +58,21 @@ $( document ).ready(function() {
         $("#outcome").toggle();
         evalAnswers();
       };
+
+      
     }, 1000);
   });
+
+  // Stop timer and display results if "Done" button is clicked.
+  $("#done").click(function() {
+    clearInterval(gogoGadgetTimer);
+
+    // Hide timer and questions.
+    $("form").toggle();
+
+    // Display outcome of game.
+    $("#outcome").toggle();
+    evalAnswers();
+  });
+    
 });
